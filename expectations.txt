@@ -1,0 +1,31 @@
+4 Files:
+	- google agenda API
+	- smartschool tasks API
+	- programma zelf
+	- GUI 
+
+
+# google API
+
+kan taken inplannen via google tasks
+kan SB's in plannen via een speciale agenda
+
+
+# smartschool API
+
+kan taken en toetsen van smartschool halen met juiste info (datum, vak, beschrijving [zie text file])
+
+
+# programma zelf
+
+import de 2 API's
+logt in op de google accounts
+kan runnen vanuit command line
+haalt info uit de 2 API's
+
+
+# GUI 
+
+kun je dingen in aanpassen met nice GUI
+moet enkel starten wanneer je iets aanpast
+kanje meerdere google en smartschool accounts op toevoegen
