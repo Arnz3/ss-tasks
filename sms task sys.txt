@@ -1,0 +1,5 @@
+dag: //*[@id="rightContainer"]/tasksandmaterials-panel/div/div[3]/tasksandmaterials-day[1]
+task : //*[@id="rightContainer"]/tasksandmaterials-panel/div/div[3]/tasksandmaterials-day[1]/div/tasksandmaterials-moment[1]/div
+title : //*[@id="rightContainer"]/tasksandmaterials-panel/div/div[3]/tasksandmaterials-day[1]/div/tasksandmaterials-moment[1]/div/div
+icon : //*[@id="rightContainer"]/tasksandmaterials-panel/div/div[3]/tasksandmaterials-day[1]/div/tasksandmaterials-moment[1]/div/tasksandmaterials-item/div/div[1]
+desc : //*[@id="rightContainer"]/tasksandmaterials-panel/div/div[3]/tasksandmaterials-day[1]/div/tasksandmaterials-moment[1]/div/tasksandmaterials-item/div/div[2]
