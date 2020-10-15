@@ -1,13 +1,8 @@
 from selenium import webdriver
 
 
-PATH = "chromedriver.exe"
-driver = webdriver.Chrome(PATH)
-driver.get("https://talent-is.smartschool.be/")
-
-
-
-def login(user, pasw):
+def login(driver, user, pasw):
+	driver.get("https://talent-is.smartschool.be/")
 	user_form = driver.find_element_by_xpath('//*[@id="login_form__username"]')
 	user_form.send_keys(user)
 	pasw_form = driver.find_element_by_xpath('//*[@id="login_form__password"]')
@@ -17,7 +12,7 @@ def login(user, pasw):
 	driver.implicitly_wait(5)
 
 
-def getTasks():
+def getTasks(driver):
 	# goto agenda
 	goto = driver.find_element_by_xpath('//*[@id="smscTopContainer"]/nav/div[2]/button')
 	goto.click()
@@ -60,9 +55,3 @@ def convertTasks(task_list):
 			task_splits.pop(0)
 			task_splits.pop(0)
 	return result
-
-
-login("CyvrsAr", "dVKpfwz69gVprMeG")
-lol2 = getTasks()
-lol = convertTasks(lol2)
-print(lol)
