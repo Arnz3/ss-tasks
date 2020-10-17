@@ -43,36 +43,60 @@ def add_task(task, date, discr):
         time.sleep(1)
 
 def add_SB(SB, date, discr):
+        #add event
         add_button = driver.find_element_by_xpath('/html/body/div[2]/div[1]/div[1]/div[1]/button/span[2]/div[2]')
         add_button.click()
         time.sleep(1)
+        #fill in date on task page
+        task_button = driver.find_element_by_xpath('//*[@id="yDmH0d"]/div/div/div[2]/span/div/div[1]/div[3]/div[1]/div[2]/div[1]/div[3]/span/span')
+        task_button.click()
+        date_form = driver.find_element_by_xpath('//*[@id="xStDaIn"]')
+        date_form.send_keys(Keys.CONTROL + 'a')
+        date_form.send_keys(Keys.BACKSPACE)
+        date_form.send_keys(date)
+        date_form.send_keys(Keys.ENTER)
+        #set task to whole day
+        whole_day = driver.find_element_by_xpath('//*[@id="tabTask"]/div/div[1]/div[2]/div[2]/label/div/div[2]')
+        whole_day.click()
+        #goto event (date is the same)
+        event_button = driver.find_element_by_xpath('//*[@id="yDmH0d"]/div/div/div[2]/span/div/div[1]/div[3]/div[1]/div[2]/div[1]/div[1]/span')
+        event_button.click()                         
+        #change the agenda you save in
         change_button = driver.find_element_by_xpath('//*[@id="tabEvent"]/div/div[7]/div[1]/div/div[2]/div/div/span/span/div[1]/div')
         change_button.click()
         time.sleep(1)
         change2_button = driver.find_element_by_xpath('//*[@id="xCalSel"]/div[1]/div[1]/div[1]/span/div/div')
         change2_button.click()
         time.sleep(1)
-        SB_button = driver.find_element_by_xpath('//*[@id="xCalSel"]/div[2]/div[2]/span/div')
-        SB_button.click()
-        time.sleep(1)
+        for i in range(2, 6): #look for agenda called SB's
+                button = driver.find_element_by_xpath(f'//*[@id="xCalSel"]/div[2]/div[{i}]/span/div/div')
+                if button.get_attribute("innerHTML") == "SB's":
+                        button.click() 
+                        break                  
+
         SB_form = driver.find_element_by_xpath('//*[@id="yDmH0d"]/div/div/div[2]/span/div/div[1]/div[3]/div[1]/div[1]/div/div[1]/div/div[1]/input')
         SB_form.send_keys(SB)
         time.sleep(1)
-        #date_form = driver.find_element_by_xpath('//*[@id="tabEvent"]/div/div[1]/div/div[1]/div/div/div[2]/div[1]/div/span/span/div[1]/span/span')
-        
-        
-        #date_form.send_keys(date)
-        #date_form.send_keys(Keys.ENTER)
-        #time.sleep(1)
+        #add a discription to event
         discr_button = driver.find_element_by_xpath('//*[@id="tabEvent"]/div/div[6]/div[1]/div/div[2]/div/div/span')
         discr_button.click()
-        discr_form = driver.find_element_by_xpath('//*[@id="c1991"]/div/div[2]/div[2]/div/div[2]/div/span/span')
+        time.sleep(1)
+        discr_form = driver.find_element_by_xpath('//*[@id="T2Ybvb2"]')
         discr_form.send_keys(discr)
         time.sleep(1)
+        #save the event
+        save_button = driver.find_element_by_xpath('//*[@id="yDmH0d"]/div/div/div[2]/span/div/div[1]/div[3]/div[2]/div[2]/span')
+        save_button.click()    
         
-        
+'''     
 login_google("matthiashenno2004", "Sissen1957")
 driver.get("https://calendar.google.com/calendar/u/0/r/agenda")
 time.sleep(3)
 add_task("test","22 10 20", "Dit is een test")
 add_SB("test", "22 10 20", "Dit is een test")
+'''
+
+login_google("cuyversarno", "kerkStraat35")
+driver.get("https://calendar.google.com/calendar/u/0/r/agenda")
+time.sleep(3)
+add_SB("test","22 10 20", "Dit is een test")
