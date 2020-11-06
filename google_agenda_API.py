@@ -50,7 +50,7 @@ def add_SB(driver, SB, date, discr):
         time.sleep(1)
         #fill in date on task page
         task_button = driver.find_element_by_xpath('//*[@id="yDmH0d"]/div/div/div[2]/span/div/div[1]/div[3]/div[1]/div[2]/div[1]/div[3]/span/span')
-        task_button.click()
+        task_button.click()                         
         date_form = driver.find_element_by_xpath('//*[@id="xStDaIn"]')
         date_form.send_keys(Keys.CONTROL + 'a')
         date_form.send_keys(Keys.BACKSPACE)

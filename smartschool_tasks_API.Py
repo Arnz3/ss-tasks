@@ -1,4 +1,5 @@
 from selenium import webdriver
+import time
 
 
 def login(driver, user, pasw):
@@ -21,6 +22,7 @@ def getTasks(driver):
 	# press dagweergave
 	day_view = driver.find_element_by_xpath('//*[@id="dayView"]')
 	day_view.click()
+	time.sleep(1)
 	# get tasks
 	busy_days = driver.find_elements_by_class_name("tasksAndMaterials__day")
 	busy_days_text = []
