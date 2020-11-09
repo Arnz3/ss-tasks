@@ -53,7 +53,7 @@ def convertTasks(task_list):
 			else:
 				task_type = "Toets"
 
-			result.append((dag, task_type, vakken[str(task[4:].split(",")[0])], disc))
+			result.append([dag, task_type, vakken[str(task[4:].split(",")[0])], disc])
 			task_splits.pop(0)
 			task_splits.pop(0)
 	return result

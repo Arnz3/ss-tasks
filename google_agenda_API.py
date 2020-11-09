@@ -91,3 +91,15 @@ def add_SB(driver, SB, date, discr):
         save_button.click()
         time.sleep(1)
 
+
+def delete_event(driver, event_name, disc):
+        events = driver.find_elements_by_class_name("i06k6b NlL62b")
+        for i in range(len(events)):
+                if events[i].innerHTML == event_name:
+                        events[i].click()
+                        e_disc = driver.find_element_by_id("xDetDlgDesc")
+                        if e_disc.innerHTML == disc:
+                                delete = driver.find_element_by_class_name(" NMm5M")
+                                delete.click()
+                                break
+                        
