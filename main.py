@@ -67,9 +67,6 @@ login_google(driver, "cuyversarno", "kerkStraat35")
 #         else: 
 #             print("already")
 
-
-write_json("test.json", ss_data)
-
 if ss_data is not None:
     for j in range(len(data)):
         if data[j] not in ss_data:

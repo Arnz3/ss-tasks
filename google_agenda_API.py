@@ -3,7 +3,6 @@ import time
 from selenium.webdriver.common.keys import Keys
 
 
-
 def login_google(driver, email, pasw):
         driver.get("https://accounts.google.com/o/oauth2/auth/identifier?client_id=717762328687-iludtf96g1hinl76e4lc1b9a82g457nn.apps.googleusercontent.com&scope=profile%20email&redirect_uri=https%3A%2F%2Fstackauth.com%2Fauth%2Foauth2%2Fgoogle&state=%7B%22sid%22%3A1%2C%22st%22%3A%2259%3A3%3Abbc%2C16%3Ad0ba58f3907446ec%2C10%3A1602440566%2C16%3A5e8fa0befc74fda1%2C0854e629b691884eaa22bc7bc4d1d9b3f4296853ac762b201e8e3403bbfa01f7%22%2C%22cdl%22%3Anull%2C%22cid%22%3A%22717762328687-iludtf96g1hinl76e4lc1b9a82g457nn.apps.googleusercontent.com%22%2C%22k%22%3A%22Google%22%2C%22ses%22%3A%22aef0a6b6f41e46f493cc26b144abd02e%22%7D&response_type=code&flowName=GeneralOAuthFlow")
         email_form = driver.find_element_by_xpath('//*[@id="identifierId"]')
@@ -70,7 +69,7 @@ def add_SB(driver, SB, date, discr):
         change2_button = driver.find_element_by_xpath('//*[@id="xCalSel"]/div[1]/div[1]/div[2]')
         change2_button.click()
         time.sleep(1)
-        for i in range(2, 6): #look for agenda called SB's
+        for _ in range(2, 6): #look for agenda called SB's
                 button = driver.find_element_by_xpath(f'//*[@id="xCalSel"]/div[1]/div[1]/div[2]')
                 if button.get_attribute("innerHTML") == "SB's":
                         button.click() 
@@ -93,13 +92,12 @@ def add_SB(driver, SB, date, discr):
 
 
 def delete_event(driver, event_name, disc):
-        events = driver.find_elements_by_class_name("i06k6b NlL62b")
-        for i in range(len(events)):
-                if events[i].innerHTML == event_name:
-                        events[i].click()
-                        e_disc = driver.find_element_by_id("xDetDlgDesc")
-                        if e_disc.innerHTML == disc:
-                                delete = driver.find_element_by_class_name(" NMm5M")
-                                delete.click()
-                                break
-                        
+        events = driver.find_elements_by_xpath(f"//*[contains(text(), '{event_name}')]")
+        for i in range (len(events)):
+                events[i].click()
+                e_disc = driver.find_element_by_id("xDetDlgDesc")
+                if e_disc.text == f"Beschrijving:\n{disc}":
+                        delete = driver.find_element_by_xpath("//div[@data-tooltip='Afspraak verwijderen']//*[name()='svg']")
+                        delete.click()
+                        break
+                
